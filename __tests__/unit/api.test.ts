@@ -16,37 +16,40 @@ describe('api', () => {
     .get(/\/[-_0-9a-zA-Z]+/g)
     .reply(200, arweaveReplyMock)
 
-  test('fetchMarketplace: should return ResponseData with arweave metadata', async () => {
-    apiNearMock
-      .get('/marketplace')
-      .query({ limit: 20, offset: 0 })
-      .reply(200, marketplaceAPIResponseMock)
+  describe('fetchMarketplace', () => {
+    it('should return ResponseData with arweave metadata', async () => {
+      apiNearMock
+        .get('/marketplace')
+        .query({ limit: 20, offset: 0 })
+        .reply(200, marketplaceAPIResponseMock)
 
-    const result = await api.fetchMarketplace()
-    const expectedResult = { data: fetchMarketplaceReplyMock, error: '' }
+      const result = await api.fetchMarketplace()
+      const expectedResult = { data: fetchMarketplaceReplyMock, error: '' }
 
-    expect(result).toStrictEqual(expectedResult)
+      expect(result).toStrictEqual(expectedResult)
+    })
   })
+  describe('fetchThingMetadata', () => {
+    it('should return ResponseData with arweave metadata', async () => {
+      const thingId = 'id'
+      apiNearMock.get(`/things/${thingId}`).reply(200, thingByIdMock)
 
-  test('fetchThingMetadata: should return ResponseData with arweave metadata', async () => {
-    const thingId = 'id'
-    apiNearMock.get(`/things/${thingId}`).reply(200, thingByIdMock)
+      const result = await api.fetchThingMetadata(thingId)
+      const expectedResult = { data: arweaveReplyMock, error: '' }
 
-    const result = await api.fetchThingMetadata(thingId)
-    const expectedResult = { data: arweaveReplyMock, error: '' }
+      expect(result).toStrictEqual(expectedResult)
+    })
 
-    expect(result).toStrictEqual(expectedResult)
-  })
+    it('should return ResponseData with error', async () => {
+      const thingId = 'id'
+      apiNearMock.get(`/things/${thingId}`).reply(404, { thing: [] })
+      const result = await api.fetchThingMetadata('id')
+      const expectedResult = {
+        data: {},
+        error: `${thingId} is not a valid thing.`,
+      }
 
-  test('fetchThingMetadata: should return ResponseData with error', async () => {
-    const thingId = 'id'
-    apiNearMock.get(`/things/${thingId}`).reply(404, { thing: [] })
-    const result = await api.fetchThingMetadata('id')
-    const expectedResult = {
-      data: {},
-      error: `${thingId} is not a valid thing.`,
-    }
-
-    expect(result).toStrictEqual(expectedResult)
+      expect(result).toStrictEqual(expectedResult)
+    })
   })
 })
