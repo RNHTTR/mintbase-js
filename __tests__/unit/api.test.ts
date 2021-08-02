@@ -29,6 +29,18 @@ describe('api', () => {
       expect(result).toStrictEqual(expectedResult)
     })
   })
+  describe('fetchAccount', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchTokenApprovals', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchApprovals', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
   describe('fetchThingMetadata', () => {
     it('should return ResponseData with arweave metadata', async () => {
       const thingId = 'id'
@@ -51,5 +63,57 @@ describe('api', () => {
 
       expect(result).toStrictEqual(expectedResult)
     })
+  })
+  describe('fetchListById', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchLists', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchThingById', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchThings', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchTokenById', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchTokens', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchStoreById', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchStores', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchCategories', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchStats', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('isTokenOwner', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('fetchMetadata', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
+  })
+  describe('custom', () => {
+    it.todo('invaid input should return error ResponseData')
+    it.todo('valid data should return data ResponseData')
   })
 })
